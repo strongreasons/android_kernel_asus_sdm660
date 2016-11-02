@@ -144,8 +144,11 @@ arm_kprobe_decode_insn(kprobe_opcode_t *addr, struct arch_specific_insn *asi)
 {
 	enum probe_insn decoded;
 	probe_opcode_t insn = le32_to_cpu(*addr);
-	probe_opcode_t *scan_end = NULL;
-	unsigned long size = 0, offset = 0;
+	probe_opcode_t *scan_start = addr - 1;
+	probe_opcode_t *scan_end = addr - MAX_ATOMIC_CONTEXT_SIZE;
+#if defined(CONFIG_MODULES) && defined(MODULES_VADDR)
+	struct module *mod;
+#endif
 
 	/*
 	 * If there's a symbol defined in front of and near enough to
@@ -163,6 +166,7 @@ arm_kprobe_decode_insn(kprobe_opcode_t *addr, struct arch_specific_insn *asi)
 		else
 			scan_end = addr - MAX_ATOMIC_CONTEXT_SIZE;
 	}
+#endif
 	decoded = arm_probe_decode_insn(insn, &asi->api);
 
 	if (decoded != INSN_REJECTED && scan_end)
