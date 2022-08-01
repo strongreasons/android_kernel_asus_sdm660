@@ -74,14 +74,14 @@ exit:
 }
 #endif
 
-int commonfp_power_on()
+int commonfp_power_on(void)
 {
 	int ret = 0;
 /*#if USE_COMMON_PINCTRL
 	ret = pinctrl_select_pin(fp_g.fp_pinctrl,"commonfp_power_on");
 	if(ret)
 		goto exit;
-	
+
 	pr_info("power on OK!!!, ret: %d\n", ret);
 	return ret;
 #endif
@@ -93,7 +93,7 @@ exit:
 	return ret;
 }
 
-int commonfp_power_off()
+int commonfp_power_off(void)
 {
 /*	int ret = 0;
 #if USE_COMMON_PINCTRL
