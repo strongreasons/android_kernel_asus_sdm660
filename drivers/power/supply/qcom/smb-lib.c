@@ -4479,7 +4479,7 @@ irqreturn_t smblib_handle_usb_plugin(int irq, void *data)
 	return IRQ_HANDLED;
 }
 
-#define USB_WEAK_INPUT_UA	1400000
+#define USB_WEAK_INPUT_UA	1500000
 #define ICL_CHANGE_DELAY_MS	1000
 irqreturn_t smblib_handle_icl_change(int irq, void *data)
 {
@@ -5466,7 +5466,7 @@ irqreturn_t smblib_handle_switcher_power_ok(int irq, void *data)
 						WEAK_CHARGER_VOTER)) {
 			smblib_err(chg,
 				"Weak charger detected: voting %dmA ICL\n",
-				*chg->weak_chg_icl_ua / 1000);
+				*chg->weak_chg_icl_ua / 1500);
 			vote(chg->usb_icl_votable, WEAK_CHARGER_VOTER,
 					true, *chg->weak_chg_icl_ua);
 			/*
