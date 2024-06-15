@@ -1,7 +1,9 @@
-<b><#selectbg_g>Feb 01,2024</#></b>
+<b><#selectbg_g>Jun 15,2024</#></b>
 
-  <*> KernelSU update v0.7.6</*>
+  <*> Pure EAS kernel build</*>
+  <*> KernelSU update v0.9.5</*>
   <*> Source rebase from darkonah</*>
+  <*> Fix umount module for A10</*>
   <*> More Changes, and Improvements</*>
 
 
@@ -9,7 +11,7 @@
 <b><#selectbg_g>NOTES :</#></b>
 
   <*> KernelSU is enabled by default and will disabled automatically if Magisk has been installed</*>
-  <*> Recommended to use KernelSU Manager v0.7.6</*>
+  <*> Recommended to use KernelSU Manager v0.9.5</*>
   <*> If u don't want KernelSU, just disable it</*>
   <*> Kernel need sometimes to settle.</*>
 
