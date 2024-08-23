@@ -31,9 +31,9 @@ tg_post_build()
 
 if ! [ -d "$KERNELDIR/ew" ]; then
 mkdir -p $KERNELDIR/ew && cd $KERNELDIR/ew
-wget -q https://github.com/Tiktodz/electrowizard-clang/releases/download/ElectroWizard-Clang-18.1.8-release/ElectroWizard-Clang-18.1.8.tar.gz -O "ElectroWizard-Clang-18.1.8.tar.gz"
-tar -xf ElectroWizard-Clang-18.1.8.tar.gz
-rm -rf ElectroWizard-Clang-18.1.8.tar.gz
+wget -q https://github.com/Kneba/venom-clang/releases/download/venom-clang-18.1.8-release/venom-clang-18.1.8.tar.gz -O "venom-clang-18.1.8.tar.gz"
+tar -xf venom-clang-18.1.8.tar.gz
+rm -rf venom-clang-18.1.8.tar.gz
 cd ..
 fi
 
