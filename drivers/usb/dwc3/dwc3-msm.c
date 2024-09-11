@@ -55,6 +55,11 @@
 #include "debug.h"
 #include "xhci.h"
 
+#ifdef CONFIG_FORCE_FAST_CHARGE
+#include <linux/fastchg.h>
+#define USB_FASTCHG_LOAD 3000 /* uA */
+#endif
+
 #define SDP_CONNETION_CHECK_TIME 10000 /* in ms */
 
 /* time out to wait for USB cable status notification (in ms)*/
@@ -3512,7 +3517,7 @@ static int dwc3_msm_host_notifier(struct notifier_block *nb,
 					dev_name(&udev->dev), max_power);
 
 			/* inform PMIC of max power so it can optimize boost */
-			pval.intval = max_power * 1000;
+			pval.intval = max_power * 2000;
 			power_supply_set_property(mdwc->usb_psy,
 					POWER_SUPPLY_PROP_BOOST_CURRENT, &pval);
 		} else {
@@ -3885,20 +3890,29 @@ static int dwc3_msm_gadget_vbus_draw(struct dwc3_msm *mdwc, unsigned mA)
 
 	psy_type = get_psy_type(mdwc);
 	if (psy_type == POWER_SUPPLY_TYPE_USB_FLOAT
-		|| (mdwc->check_for_float && mdwc->float_detected)) {
+		|| (mdwc->check_for_float && mdwc->float_detected))
+	#ifdef CONFIG_FORCE_FAST_CHARGE
+	if (force_fast_charge == 1) {
 		if (!mA)
 			pval.intval = -ETIMEDOUT;
-		else
-			pval.intval = 1000 * mA;
+	} else if (force_fast_charge == 2) {
+			pval.intval = USB_FASTCHG_LOAD * mA;
 		goto set_prop;
 	}
+#endif
 
 	if (mdwc->max_power == mA || psy_type != POWER_SUPPLY_TYPE_USB)
 		return 0;
 
 	dev_info(mdwc->dev, "Avail curr from USB = %u\n", mA);
 	/* Set max current limit in uA */
+	#ifdef CONFIG_FORCE_FAST_CHARGE
+	if (force_fast_charge == 1) {
 	pval.intval = 1000 * mA;
+	} else if (force_fast_charge == 2) {
+	pval.intval = USB_FASTCHG_LOAD * mA;
+	}
+#endif
 
 set_prop:
 	ret = power_supply_set_property(mdwc->usb_psy,
