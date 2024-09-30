@@ -93,6 +93,7 @@ export PATH="$KERNELDIR/ew/bin:$PATH"
 export ARCH=arm64
 export SUBARCH=arm64
 export KBUILD_BUILD_USER="queen"
+export LD=ld.lld
 export LLVM=1
 export LLVM_IAS=1
 export KBUILD_COMPILER_STRING="$($KERNELDIR/ew/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')"
