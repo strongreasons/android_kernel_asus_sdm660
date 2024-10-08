@@ -5,7 +5,7 @@ KERNELDIR=$(pwd)
 # Identity
 CODENAME=Onyx
 KERNELNAME=TOM
-VARIANT=HMP
+VARIANT=EAS
 VERSION=EOL
 
 # The name of the device for which the kernel is built
@@ -25,7 +25,7 @@ export KBUILD_BUILD_HOST CI_BRANCH TERM
 # 'ld.lld'(default)
 LINKER=ld.lld
 
-CHANGELOGS=https://github.com/strongreasons/android_kernel_asus_sdm660/commits/wip/
+CHANGELOGS=https://github.com/strongreasons/android_kernel_asus_sdm660/commits/eas-wip/
 
 TG_TOPIC=0
 BOT_MSG_URL="https://api.telegram.org/bot$TG_TOKEN/sendMessage"
@@ -128,7 +128,7 @@ fi
 
 # Anykernel3 time!!
 if ! [ -d "$KERNELDIR/AnyKernel3" ]; then
-git clone --depth=1 https://github.com/Tiktodz/AnyKernel3 -b hmp AnyKernel3
+git clone --depth=1 https://github.com/Tiktodz/AnyKernel3 -b eas AnyKernel3
 ls $ANYKERNEL3_DIR
 cp $KERNELDIR/out/arch/arm64/boot/Image.gz-dtb $ANYKERNEL3_DIR
 fi
