@@ -6,7 +6,7 @@ KERNELDIR=$(pwd)
 CODENAME=Onyx
 KERNELNAME=TOM
 VARIANT=EAS
-VERSION=EOL
+VERSION=EOL-CIP68
 
 # The name of the device for which the kernel is built
 MODEL="ZenFone Max Pro M1"
@@ -25,7 +25,7 @@ export KBUILD_BUILD_HOST CI_BRANCH TERM
 # 'ld.lld'(default)
 LINKER=ld.lld
 
-CHANGELOGS=https://github.com/strongreasons/android_kernel_asus_sdm660/commits/eas-wip/
+CHANGELOGS=https://git.kernel.org/pub/scm/linux/kernel/git/cip/linux-cip.git/tag/?h=v4.4.302-cip68
 
 TG_TOPIC=0
 BOT_MSG_URL="https://api.telegram.org/bot$TG_TOKEN/sendMessage"
@@ -109,7 +109,7 @@ command -v java > /dev/null 2>&1
 mkdir -p out
 make O=out clean
 
-tg_post_msg "<b>😡 Build Triggered</b>%0A<b>Docker OS: </b><code>$DISTRO</code>%0A<b>Kernel Version : </b><code>$KERVER</code>%0A<b>Date : </b><code>$(TZ=Asia/Jakarta date)</code>%0A<b>Device : </b><code>$MODEL [$DEVICE]</code>%0A<b>Pipeline Host : </b><code>$KBUILD_BUILD_HOST</code>%0A<b>Host Core Count : </b><code>$PROCS</code>%0A<b>Compiler Used : </b><code>$KBUILD_COMPILER_STRING</code>%0A<b>Linker : </b><code>$LINKER</code>%0a<b>Branch : </b><code>$CI_BRANCH</code>%0A<b>Top Commit : </b><code>$COMMIT_HEAD</code>%0A<a href='$CHANGELOGS'>Changelogs</a>"
+tg_post_msg "<b>😡 Build Triggered</b>%0A<b>Docker OS: </b><code>$DISTRO</code>%0A<b>Kernel Version : </b><code>$KERVER</code>%0A<b>Date : </b><code>$(TZ=Asia/Jakarta date)</code>%0A<b>Device : </b><code>$MODEL [$DEVICE]</code>%0A<b>Pipeline Host : </b><code>$KBUILD_BUILD_HOST</code>%0A<b>Host Core Count : </b><code>$PROCS</code>%0A<b>Compiler Used : </b><code>$KBUILD_COMPILER_STRING</code>%0A<b>Linker : </b><code>$LINKER</code>%0a<b>Branch : </b><code>$CI_BRANCH</code>%0A<b>Top Commit : </b><code>$COMMIT_HEAD</code>%0A<a href='$CHANGELOGS'>CIP Changelogs</a>"
 
 # Starting compilation
 make $KERNEL_DEFCONFIG O=out 2>&1 | tee -a error.log
