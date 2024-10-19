@@ -1,19 +1,23 @@
-<b><#selectbg_g>Sep 30,2024</#></b>
+<b><#selectbg_g>Oct 20,2024</#></b>
 
+  <*> cfq-iosched: Fix null pointer dereference</*>
+  <*> kallsyms: don't overload absolute symbol type for percpu symbols</*>
+  <*> crypto/lzo-rle: Rewrite api to adapt kernel 4.4</*>
+  <*> haptics: Set strength to 3006</*>
   <*> Add Some Tweak Changes, and Improvements</*>
 
 
 
 <b><#selectbg_g>NOTES eng:</#></b>
 
-  <*> If experience full storage problems, Use the fix methods that have been shared in the group or use Kernelsu version 0.7.6</*>
+  <*> KernelSU v0.9.5 is having 1/2TB storage problem, use the fix method that has been shared in our group</*>
   <*> Spectrum will only work well if you use the OC option</*>
   <*> Kernel need sometimes to settle.</*>
 
 
 
 <b><#selectbg_g>NOTES id:</#></b>
-  <*> Jika mengalami masalah penyimpanan penuh, Gunakan cara perbaikan yang sudah dibagikan di grup atau gunakan Kernelsu versi 0.7.6</*>
+  <*> KernelSU v0.9.5 mengalami masalah penyimpanan 1/2TB, Gunakan cara perbaikan yang sudah dibagikan di grup kami</*>
   <*> Spectrum hanya akan bekerja dengan baik jika Anda menggunakan opsi OC</*>
   <*> Kernel perlu beberapa waktu untuk beradaptasi.</*>
 

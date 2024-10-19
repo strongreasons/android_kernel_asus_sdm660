@@ -4,6 +4,7 @@ KERNELDIR=$(pwd)
 
 # Identity
 CODENAME=Onyx
+CODENAME2=Hayzel
 KERNELNAME=TOM
 VARIANT=HMP
 VERSION=EOL
@@ -140,7 +141,7 @@ cp -af $KERNELDIR/changelog META-INF/com/google/android/aroma/changelog.txt
 cp -af anykernel-real.sh anykernel.sh
 sed -i "s/kernel.string=.*/kernel.string=$KERNELNAME/g" anykernel.sh
 sed -i "s/kernel.type=.*/kernel.type=$VARIANT/g" anykernel.sh
-sed -i "s/kernel.for=.*/kernel.for=$CODENAME/g" anykernel.sh
+sed -i "s/kernel.for=.*/kernel.for=$CODENAME-$CODENAME2/g" anykernel.sh
 sed -i "s/kernel.compiler=.*/kernel.compiler=$KBUILD_COMPILER_STRING/g" anykernel.sh
 sed -i "s/kernel.made=.*/kernel.made=dotkit @fakedotkit/g" anykernel.sh
 sed -i "s/kernel.version=.*/kernel.version=$KERVER/g" anykernel.sh
