@@ -1,8 +1,10 @@
-<b><#selectbg_g>Oct 20,2024</#></b>
+<b><#selectbg_g>Oct 25,2024</#></b>
 
+  <*> KernelSU update to v1.0.1</*>
   <*> cfq-iosched: Fix null pointer dereference</*>
   <*> kallsyms: don't overload absolute symbol type for percpu symbols</*>
   <*> crypto/lzo-rle: Rewrite api to adapt kernel 4.4</*>
+  <*> qcom: Update irq handle for GPIO pins</*>
   <*> haptics: Set strength to 3006</*>
   <*> Add Some Tweak Changes, and Improvements</*>
 
